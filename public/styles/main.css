@@ -1,0 +1,249 @@
+
+html{
+    font-family: "Oswald", sans-serif;
+}
+.game {
+     margin-bottom: 20px;
+    }
+
+.background-image {
+        width: 15%;
+        height: auto;
+}
+
+.icon {
+        width: 20px;
+        height: 20px;
+}
+
+.custom-body {
+    font-family: "Oswald", sans-serif;
+    background-color: #21242a !important;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h3, h5 {
+    color: #fff;
+}
+
+.card-title {
+    font-size: 2.1rem;
+    font-weight: bold;
+    color: #fff; 
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+.card-text {
+    font-size: 1.2rem;
+    color: rgb(225, 220, 220); 
+    text-align: center;
+}
+
+.addedtime {
+    margin: 0 ;
+    display: flex;
+    justify-content: flex-start;
+    color: #bab6b6; 
+}
+
+
+.container {
+    margin-top: 20px;
+}
+
+
+button {
+    font-size: 1rem;
+}
+
+
+.background-image {
+    width: 50%;
+    height: auto;
+    display: block; 
+    margin: 0 auto; 
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+
+.newh1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.newformp {
+    margin: 10px 0 5px;
+}
+
+
+.card-body {
+    background-color: #23282f !important; 
+    padding: 20px;
+    border-radius: 5px; 
+    border: 0.5px solid #222831 !important; 
+}
+
+.game {
+    margin-bottom: 20px;
+}
+
+.newh1 {
+    text-align: center;
+    margin: 40px 0;
+    color: #fff;
+}
+
+
+.newform {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #222831 !important; 
+    border-radius: 8px;
+  
+}
+
+.newform h3 {
+    color: #fff; 
+    text-align: center; 
+    margin-bottom: 10px;
+}
+
+.newform input[type="text"] {
+    display: block;
+    margin: 0 auto;
+    width: 75%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #23282f; 
+    border-radius: 4px;
+    background-color:#31363F; 
+    color: #fff; 
+}
+
+.newform button {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: rgba(18, 19, 21, 0.724); 
+    color: #fff; 
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newform button:hover {
+    background-color: #31363f85; 
+}
+
+body {
+    font-family: "Oswald", sans-serif;
+    background-color: #31363F; 
+    color: #fff; 
+    margin: 0;
+    padding: 0;
+}
+
+
+.btn-custom {
+    background-color: #31363F; 
+    border-color: #373a41; 
+    color: #fff; 
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.btn-custom:hover {
+    background-color: #4a4d52; 
+    border-color: #5b5f66; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+
+.icon {
+    width: 20px; 
+    height: 20px; 
+}
+
+.sitetitle {
+    margin-bottom: 5%;
+    margin-top: 2%;
+    color: aliceblue;
+    font-size: 6rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+.sitetitles {
+    margin-bottom: 2%;
+    margin-top: 2%;
+    color: aliceblue;
+    font-size: 6rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+.siteimg {
+    width: 25%;
+    height: 25%;
+    border-color: orange;
+    box-shadow: 0px 0px 10px 2px rgba(255, 179, 0, 0.6);
+    border-radius: 250px;
+}
+
+.sitebutton {
+    width: auto;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.883); 
+    color: #fff; 
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sitebutton:hover {
+    background-color: #31363f85; 
+}
+
+.sitebutton button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+
+.sitebutton {
+    margin: 0 10px;
+}
+
+
+.dropdown .btn {
+    background-color: #31363F;
+    border-color: #373a41;
+    color: #ffffff;
+}
+
+.dropdown-menu {
+    background-color: #31363F;
+    border-color: #373a41;
+}
+
+.dropdown-item {
+    color: #ffffff;
+}
+
+.dropdown-item:hover {
+    background-color: #373a41;
+}

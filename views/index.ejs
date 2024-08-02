@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>emrecritic</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/icons/site.webmanifest">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body class="custom-body">
+    <div class="container">  
+
+        <%# Page Title %>
+        <div class="text-center mb-4">
+            <div class="d-flex justify-content-center align-items-center">
+                <h1 class="sitetitle">
+                    <img class="siteimg logo mx-2" src="/assets/icons/logo.png" alt="emrecritic logo">
+                    emrecritic
+                </h1>
+            </div>
+        </div>
+
+        <%# Dropdown list and add game button %>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="sitebutton me-auto">
+                <div class="dropdown">
+                    <button class=" sitebutton dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Select Game List
+                    </button>
+                    <ul style="background-color:darkgray;" class="dropdown-menu">
+                        <li ><a  class="dropdown-item" href="/">Score high to low</a></li>
+                        <li ><a class="dropdown-item" href="/gamebyscoreasc">Score low to high</a></li>
+                        <li ><a class="dropdown-item" href="/gamebydateaddnew">Date added new to old</a></li>
+                        <li ><a class="dropdown-item" href="/gamebydateaddold">Date added old to new</a></li>
+                    </ul>
+                </div>
+            </div>
+            <form class="sitebutton" action="/add" method="post">
+                <button type="submit">Add a Game</button>
+            </form>
+        </div>
+        
+        
+       <%# Game Card Sections %>
+        <div class="row">
+            <% games.forEach(game => { %>
+                <div class="col-12 mb-4">
+                    <div class="card h-100 bg-secondary text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-end">
+                                <button style="background-color: #31363F; border-color:#373a41;" id="edit<%=game.id%>" class="btn btn-warning btn-custom" onclick="handler('<%=game.id%>')">
+                                    <img class="icon" src="/assets/icons/pencil-solid.svg" alt="pencil image">
+                                </button>
+                            </div>
+                            <h1 id="title<%=game.id%>" class="card-title shadow-text"><%= game.title %></h1>
+                            <p id="score<%=game.id%>" class="card-text shadow-text">Score : <%= game.score %></p>
+                            <p id="comment<%=game.id%>" class="card-text shadow-text">Comment : <%= game.comment %></p>
+                            
+                            <% if (game.background_image) { %>
+                                <img class="background-image img-fluid rounded mb-3" src="<%= game.background_image %>" alt="Background Image for <%= game.title %>">
+                            <% } else { %>
+                                <p style="font-weight: bold;" class="card-text">No game image available</p>
+                            <% } %>
+                            <form class="edit" action="/edit" method="post">
+                                <input type="hidden" name="updatedGameId" value="<%= game.id %>">
+                                <input id="inputTitle<%=game.id%>" type="text" name="updatedGameTitle" value="<%= game.title %>" autocomplete="off" class="form-control mb-2" hidden="true">
+                                <input id="inputScore<%=game.id%>" type="text" name="updatedGameScore" value="<%= game.score %>" autocomplete="off" class="form-control mb-2" hidden="true">
+                                <input id="inputComment<%=game.id%>" type="text" name="updatedGameComment" value="<%= game.comment %>" autocomplete="off" class="form-control mb-2" hidden="true">
+                                <button style="background-color: #31363F; border-color:#373a41;"     id="done<%=game.id %>" class="btn btn-success" type="submit" hidden>
+                                    <img class="icon" src="/assets/icons/check-solid.svg" alt="tick image">
+                                </button>
+                            </form>
+                            <div class="d-flex justify-content-end">
+                                <form action="/delete" method="post" class="mb-2">
+                                    <input type="hidden" name="deleteGameId" value="<%= game.id %>">
+                                    <button style="background-color: #31363F; border-color:#373a41;"type="submit" class="btn btn-warning btn-custom">
+                                        <img class="icon" src="/assets/icons/delete.png" alt="trash image">
+                                    </button>
+                                </form>
+                            </div>
+                            <p class="addedtime"><small class="shadow-text"><%= game.created_at %></small></p>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    
+    <script>
+        function handler(id) {
+            document.getElementById(`title${id}`).hidden = true;
+            document.getElementById(`score${id}`).hidden = true;
+            document.getElementById(`comment${id}`).hidden = true;
+            document.getElementById(`inputTitle${id}`).hidden = false;
+            document.getElementById(`inputScore${id}`).hidden = false;
+            document.getElementById(`inputComment${id}`).hidden = false;
+            document.getElementById(`edit${id}`).hidden = true;
+            document.getElementById(`done${id}`).hidden = false;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+<%- include('partials/footer.ejs'); -%>
