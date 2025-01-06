@@ -2,7 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import pg from "pg";
 import axios from "axios";
-
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 const port = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -12,11 +13,11 @@ app.use(express.static("public"));
 
 //Database connection
 const db = new pg.Client({
-    user: "postgres",
-    host: "localhost",
-    database: "game",
-    password: "*******",//Add your password here
-    port: 5432,
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
 });
 db.connect();
 
@@ -30,6 +31,8 @@ let games = [
     }
 ];
 
+const apiKey = process.env.API_KEY;
+
 //Score high to low Function
 async function getGames() {
     const result = await db.query("SELECT id, title, score, comment, TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI') AS created_at FROM games ORDER BY score DESC;");
@@ -37,7 +40,7 @@ async function getGames() {
 
     for (let game of games) {
         try {
-            const response = await axios.get(`https://api.rawg.io/api/games?search=${game.title}&key=YOUR_API_KEY`);    //Add your API key here
+            const response = await axios.get(`https://api.rawg.io/api/games?search=${game.title}&key=${apiKey}`);
             if (response.data.results && response.data.results.length > 0) {
                 game.background_image = response.data.results[0].background_image; 
             }
